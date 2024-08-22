@@ -8,8 +8,8 @@ import {
 // layouts and pages
 import RootLayout from './layouts/RootLayout'
 import Dashboard from './pages/Dashboard'
-import Profile from './pages/Profile'
 import Logo from './pages/Logo'
+import AddSpam from './pages/AddSpam'
 
 // router and routes
 const router = createBrowserRouter(
@@ -17,7 +17,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Dashboard />} />
       <Route path="create" element={<Logo />} />
-      <Route path="profile" element={<Profile />} />
+      <Route path="add-spam-url" element={<AddSpam />} />
     </Route>
   )
 )

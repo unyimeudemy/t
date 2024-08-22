@@ -1,6 +1,9 @@
-import { border, Box, Button, Center, color, Container, Flex, Input, Text } from '@chakra-ui/react'
+import {  Box, Button,  Flex, Input, Text, useDisclosure } from '@chakra-ui/react'
 import Logo from './Logo';
 import CopyTextComponent from './CopyTextComponent';
+import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import Axios from '../util/axios';
 
 const container = {
     width: "100vw",
@@ -20,7 +23,8 @@ const container = {
     backgroundColor: "gray.100", 
     borderRadius: "5px",
     border: "2px solid #3795BD", 
-    mt:"60px",
+    fontSize:"20px",
+    mt:"10px",
     _focus: {
         border: "2px solid #3795BD",  
       },   
@@ -51,7 +55,7 @@ const shortUrl = {
     width: "350px",          
     backgroundColor: "white", 
     border:"2px solid #3795BD",
-    mt:"17px",
+    // mt:"17px",
     display:"flex",
     alignItems: "center",
     justifyContent: "center"
@@ -84,21 +88,76 @@ const shortUrl = {
     }
   }
 
+  const errorBox ={
+    display:"flex",
+    alignItems:"center",
+    justifyContent: "center",
+    bg: "red",
+    height:"30px",
+    width:'505px',
+    borderRadius:"8px"
+
+  }
+
+
 export default function Dashboard() {
+    const [url, setUrl] = useState(""); 
+    const [shortenedUrl, setShortenedUrl] = useState(""); 
+    const navigate = useNavigate();
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const cancelRef = React.useRef();
+
+    const handleInput = (e) => {
+        setUrl(e.target.value); 
+    };
+
+    const handleShortenUrl = async () => {
+        try {
+            const response = await Axios.post('/generate', { url: url });
+            console.log(response);
+        
+            setShortenedUrl(response.data.url); 
+        } catch (error) {
+            console.error("Error generating short URL:", error);
+        }
+    };
+
   return (
-    <Container sx={container}>
+      <>
+        <Flex sx={container}>
         <Logo />
         <Box sx={wrapper}>
-            <Input sx={inputStyle}/>
+        <Text color={"#3795BD"} fontSize={"30px"} fontFamily={'monospace'}>Shorten a long URL</Text>
+            <Box sx={errorBox}>
+
+            </Box>
+            <Input 
+                value={url}
+                onChange={handleInput}
+                sx={inputStyle}
+                placeholder="Enter your long URL here"
+            />
             <Box sx={copyBox}>
                 <Box sx={shortUrl}>
-                    <Text fontWeight="900"  fontSize='30px' color={"#bfbfbf"}>www.short-url.com</Text>
+                    <Text fontWeight="900"  fontSize='20px' color={"#3795BD"}>
+                        {shortenedUrl || "www.short-url.com"}
+                    </Text>
                 </Box>
-                <CopyTextComponent/>
+                <CopyTextComponent text={shortenedUrl}/>
             </Box>
-            <Button sx={button}>Shorten URL</Button>
-            <Text as='u' sx={link}>Click here to add spam url</Text>
+            <Button
+             onClick={() => {
+                handleShortenUrl();
+                onOpen();
+             }}
+              sx={button}
+               > Shorten URL </Button>
+            <Text onClick={() => {navigate("/add-spam-url")}}
+             as='u' sx={link}
+             >Click here to add spam url</Text>
         </Box>
-    </Container>
+    </Flex>
+    </>
+    
   )
 }

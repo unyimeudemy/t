@@ -16,7 +16,6 @@ const CopyTextComponent = ({ text }) => {
 
   return (
     <Box >
-      <Text>{text}</Text>
       <CopyToClipboard text={text} onCopy={() => setCopied(true)}>
         <Button  colorScheme="teal" sx={container}>
             <Text color={"white"} fontWeight="900">{copied ? "Copied!" : "Copy to Clipboard"}</Text>
