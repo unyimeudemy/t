@@ -158,7 +158,7 @@ export default function Dashboard() {
             />
             <Box sx={copyBox}>
                 <Box sx={shortUrl}>
-                    <Text fontWeight="900"  fontSize='20px' color={"#3795BD"}>
+                    <Text fontWeight="900"  fontSize='15px' color={"#3795BD"}>
                         {shortenedUrl || "www.short-url.com"}
                     </Text>
                 </Box>
