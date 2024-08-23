@@ -7,7 +7,7 @@ export default function RootLayout() {
         <Box 
         width="100vw"
         height="100vh"
-        background={"#F7F7F8"}
+        background={"#d7ebf4"}
         >
         <Outlet />
         </Box>
