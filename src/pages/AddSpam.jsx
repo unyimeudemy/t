@@ -1,4 +1,4 @@
-import { border, Box, Button, Center, color, Container, Flex, Input, Text } from '@chakra-ui/react'
+import { border, Box, Button, Center, color, Container, Flex, Input, Spinner, Text } from '@chakra-ui/react'
 import Logo from './Logo';
 import CopyTextComponent from './CopyTextComponent';
 import { useNavigate } from 'react-router-dom';
@@ -73,9 +73,34 @@ const container = {
     }
   }
 
+  const feedBackStyle ={
+    display:"flex",
+    alignItems:"center",
+    justifyContent: "center",
+    bg: "#e6ffe6",
+    height:"30px",
+    width:'505px',
+    borderRadius:"8px",
+    border: "1px solid green",
+    color: "green",
+    fontWeight:"600",
+    fontSize: "15px"
+
+  }
+
+  const spinner = {
+    color: "#3795BD",
+    size:"md",
+    _hover: {
+        color: "#3795BD"
+    }
+  }
+
 
 export default function AddSpam() {
     const [spamUrl, setSpamUrl] = useState("");
+    const [feedBack, setFeedBack] = useState(false);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleInput = (e) => {
@@ -83,11 +108,17 @@ export default function AddSpam() {
     }
 
     const handleClick = async () => {
+        setLoading(true);
+        setFeedBack(false);
         try{
             const res = await Axios.post("/add_spam_url", {url: spamUrl});
-            console.log(res);
+            if(res.data.url != null){
+                setFeedBack(true);
+            }
         }catch(error){
             console.log(error);
+        }finally{
+            setLoading(false);
         }
     }
 
@@ -97,6 +128,9 @@ export default function AddSpam() {
     <Logo />
     <Box sx={wrapper}>
     <Text color={"#3795BD"} fontSize={"30px"} fontFamily={'monospace'}>Add a spam URL</Text>
+    {feedBack && <Box sx={feedBackStyle}>
+                Spam URL was added successfully
+            </Box>}
         <Input
          onChange={handleInput}
          sx={inputStyle}
@@ -105,7 +139,9 @@ export default function AddSpam() {
         <Button
          sx={button}
          onClick={handleClick}
-        >Add spam URL</Button>
+        >
+            {loading ? <Spinner size="md" sx={spinner}/> : "Add spam URL"}
+        </Button>
         <Text onClick={() => {navigate("/")}}
          as='u' sx={link}
          >Click here to shorten a long URL</Text>

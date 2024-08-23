@@ -1,4 +1,4 @@
-import {  Box, Button,  Flex, Input, Text, useDisclosure } from '@chakra-ui/react'
+import {  Box, Button,  Flex, Input, Spinner, Text } from '@chakra-ui/react'
 import Logo from './Logo';
 import CopyTextComponent from './CopyTextComponent';
 import { useNavigate } from 'react-router-dom';
@@ -92,33 +92,52 @@ const shortUrl = {
     display:"flex",
     alignItems:"center",
     justifyContent: "center",
-    bg: "red",
+    bg: "#ffe6e6",
     height:"30px",
     width:'505px',
-    borderRadius:"8px"
+    borderRadius:"8px",
+    border: "1px solid red",
+    color: "red",
+    fontWeight:"600",
+    fontSize: "15px"
 
+  }
+
+  const spinner = {
+    color:'#3795BD',
+     size:'md',
+     _hover: {
+        color: "white"
+     }
   }
 
 
 export default function Dashboard() {
     const [url, setUrl] = useState(""); 
     const [shortenedUrl, setShortenedUrl] = useState(""); 
+    const [errMsg, setErrMsg] = useState(false);
+    const [loading, isLoading] = useState(false);
     const navigate = useNavigate();
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const cancelRef = React.useRef();
+    
 
     const handleInput = (e) => {
         setUrl(e.target.value); 
     };
 
     const handleShortenUrl = async () => {
+        isLoading(true);
+        setErrMsg(false);
         try {
             const response = await Axios.post('/generate', { url: url });
-            console.log(response);
-        
+            const urlResult = response.data.url;
+            if(!urlResult.startsWith("http")){
+                setErrMsg(true);
+            }
             setShortenedUrl(response.data.url); 
         } catch (error) {
             console.error("Error generating short URL:", error);
+        }finally{
+            isLoading(false);
         }
     };
 
@@ -128,9 +147,9 @@ export default function Dashboard() {
         <Logo />
         <Box sx={wrapper}>
         <Text color={"#3795BD"} fontSize={"30px"} fontFamily={'monospace'}>Shorten a long URL</Text>
-            <Box sx={errorBox}>
-
-            </Box>
+            {errMsg && <Box sx={errorBox}>
+                URL is a spam
+            </Box>}
             <Input 
                 value={url}
                 onChange={handleInput}
@@ -148,10 +167,11 @@ export default function Dashboard() {
             <Button
              onClick={() => {
                 handleShortenUrl();
-                onOpen();
              }}
               sx={button}
-               > Shorten URL </Button>
+               > 
+               {loading ? <Spinner sx={spinner} /> : "Shorten URL"} 
+               </Button>
             <Text onClick={() => {navigate("/add-spam-url")}}
              as='u' sx={link}
              >Click here to add spam url</Text>

@@ -6,7 +6,6 @@ const container = {
     height: "45px",
     width: "150px",          
     backgroundColor: "#3795BD",
-    // borderRadius: "5px",
     border: "2px solid #3795BD"
 
 }

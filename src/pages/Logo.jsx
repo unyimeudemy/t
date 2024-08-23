@@ -1,6 +1,5 @@
 import { Box, Container, Flex, Input, Text } from "@chakra-ui/react";
 
-
   const Id = {
     width: "800px",
     height: "100px",
@@ -20,8 +19,6 @@ import { Box, Container, Flex, Input, Text } from "@chakra-ui/react";
     height: "100px",
     width: "400px",
   }
-
-
 
 export default function Logo() {
   return (

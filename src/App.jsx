@@ -10,6 +10,7 @@ import RootLayout from './layouts/RootLayout'
 import Dashboard from './pages/Dashboard'
 import Logo from './pages/Logo'
 import AddSpam from './pages/AddSpam'
+import TargetPage from './pages/TargetPage'
 
 // router and routes
 const router = createBrowserRouter(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
       <Route index element={<Dashboard />} />
       <Route path="create" element={<Logo />} />
       <Route path="add-spam-url" element={<AddSpam />} />
+      <Route path="*" element={<TargetPage />} />
     </Route>
   )
 )
