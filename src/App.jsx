@@ -2,7 +2,8 @@ import {
   createBrowserRouter, 
   createRoutesFromElements, 
   Route, 
-  RouterProvider 
+  RouterProvider,
+  BrowserRouter 
 } from 'react-router-dom'
 
 // layouts and pages
@@ -26,7 +27,10 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <BrowserRouter basename="/">
+        <RouterProvider router={router} />
+    </BrowserRouter>
+    
   )
 }
 
