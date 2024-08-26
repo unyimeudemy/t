@@ -2,8 +2,7 @@ import {
   createBrowserRouter, 
   createRoutesFromElements, 
   Route, 
-  RouterProvider,
-  BrowserRouter 
+  RouterProvider
 } from 'react-router-dom'
 
 // layouts and pages
