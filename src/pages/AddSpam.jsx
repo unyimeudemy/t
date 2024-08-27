@@ -45,7 +45,7 @@ const container = {
     borderRadius: "10px", 
     "@media only screen and (max-width: 625px)": {
         // width: "85%",
-        width:"380px",
+        width:"370px",
       },
 
   }

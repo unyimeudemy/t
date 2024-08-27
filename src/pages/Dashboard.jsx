@@ -45,7 +45,7 @@ const container = {
     border: "2px solid #3795BD",
     borderRadius: "10px", 
     "@media only screen and (max-width: 625px)": {
-        width:"380px",
+        width:"370px",
         height:"400px",
       },
 
@@ -176,7 +176,7 @@ export default function Dashboard() {
             <Box sx={copyBox}>
                 <Box sx={shortUrl}>
                     <Text fontWeight="900"  fontSize='15px' color={"#3795BD"}>
-                        {shortenedUrl || "www.short-url.com"}
+                        {shortenedUrl.substring(15) || "www.short-url.com"}
                     </Text>
                 </Box>
                 <CopyTextComponent text={shortenedUrl}/>
