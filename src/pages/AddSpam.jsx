@@ -44,7 +44,8 @@ const container = {
     border: "2px solid #3795BD",
     borderRadius: "10px", 
     "@media only screen and (max-width: 625px)": {
-        width: "90%",
+        // width: "85%",
+        width:"380px",
       },
 
   }

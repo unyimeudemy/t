@@ -16,6 +16,9 @@ import { Box, Text } from "@chakra-ui/react";
     flexDirection:"column",
     height: "100px",
     width: "400px",
+    "@media only screen and (max-width: 625px)": {
+        width: "80%",
+      },
   }
 
 export default function Logo() {

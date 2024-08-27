@@ -1,4 +1,4 @@
-import { background, Box } from "@chakra-ui/react"
+import {  Box } from "@chakra-ui/react"
 import { Outlet } from "react-router-dom"
 
 const layout = {

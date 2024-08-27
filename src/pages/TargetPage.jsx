@@ -8,7 +8,6 @@ const TargetPage = () => {
     const location = useLocation();
     let currentRoute = location.pathname;
     currentRoute = "https://t-2t2q.onrender.com" + currentRoute;
-    console.log("---------------------", currentRoute)
 
     useEffect(() => {
         const fetchData = async () => {
