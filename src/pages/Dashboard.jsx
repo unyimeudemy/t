@@ -191,7 +191,7 @@ export default function Dashboard() {
                </Button>
             <Text onClick={() => {navigate("/add-spam-url")}}
              as='u' sx={link}
-             >Click here to add spam url</Text>
+             >Click here to add spam URL</Text>
         </Box>
     </Flex>
     </>
