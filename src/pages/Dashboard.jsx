@@ -176,7 +176,7 @@ export default function Dashboard() {
             <Box sx={copyBox}>
                 <Box sx={shortUrl}>
                     <Text fontWeight="900"  fontSize='15px' color={"#3795BD"}>
-                        {shortenedUrl.substring(17) || "www.short-url.com"}
+                        {shortenedUrl.substring(27) || "www.short-url.com"}
                     </Text>
                 </Box>
                 <CopyTextComponent text={shortenedUrl}/>
