@@ -1,4 +1,4 @@
-import {  Box, Button,  Flex, Input, Spinner, Text } from '@chakra-ui/react'
+import {  background, Box, Button,  Flex, Input, Spinner, Text } from '@chakra-ui/react'
 import Logo from './Logo';
 import CopyTextComponent from './CopyTextComponent';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +11,7 @@ const container = {
     display: "flex",
     flexDirection: "column",
     alignItems:"center",
-    justifyContent:"center"
+    justifyContent:"center",
   };
 
   const inputStyle = {
@@ -28,6 +28,10 @@ const container = {
     _focus: {
         border: "2px solid #3795BD",  
       },   
+
+      "@media only screen and (max-width: 625px)": {
+        width: "90%",
+      },
   };
 
   const wrapper ={
@@ -40,6 +44,10 @@ const container = {
     bg:"white",
     border: "2px solid #3795BD",
     borderRadius: "10px", 
+    "@media only screen and (max-width: 625px)": {
+        width:"400px",
+        height:"400px",
+      },
 
   }
 
@@ -47,7 +55,10 @@ const container = {
 const copyBox = {
     display:"flex",
     alignItems:"center",
-    justifyContent: "center"
+    justifyContent: "center",
+    "@media only screen and (max-width: 625px)": {
+        width: "90%"
+          },
 }
 
 const shortUrl = {
@@ -55,10 +66,11 @@ const shortUrl = {
     width: "350px",          
     backgroundColor: "white", 
     border:"2px solid #3795BD",
-    // mt:"17px",
     display:"flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+
+
     
   };
 
@@ -70,6 +82,9 @@ const shortUrl = {
     border: "none", 
     fontSize: "20px",
     fontWeight:"900",
+    "@media only screen and (max-width: 625px)": {
+        width:"90%"
+      },
     _hover: {
         color: "#3795BD",
       backgroundColor: "white", 
@@ -99,8 +114,10 @@ const shortUrl = {
     border: "1px solid red",
     color: "red",
     fontWeight:"600",
-    fontSize: "15px"
-
+    fontSize: "15px",
+    "@media only screen and (max-width: 625px)": {
+        width: "90%",
+      },
   }
 
   const spinner = {

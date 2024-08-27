@@ -1,6 +1,5 @@
 import { border, Box, Button, Center, color, Container, Flex, Input, Spinner, Text } from '@chakra-ui/react'
 import Logo from './Logo';
-import CopyTextComponent from './CopyTextComponent';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Axios from '../util/axios';
@@ -27,7 +26,11 @@ const container = {
     mt:"10px",
     _focus: {
         border: "2px solid #3795BD",  
-      },   
+      },  
+      
+      "@media only screen and (max-width: 625px)": {
+        width: "90%",
+      },
   };
 
   const wrapper ={
@@ -40,11 +43,11 @@ const container = {
     bg:"white",
     border: "2px solid #3795BD",
     borderRadius: "10px", 
+    "@media only screen and (max-width: 625px)": {
+        width: "90%",
+      },
 
   }
-
-
-
 
 
   const button = {
@@ -61,6 +64,9 @@ const container = {
       border: "2px solid #3795BD",
       cursor: "pointer", 
     },
+    "@media only screen and (max-width: 625px)": {
+        width: "90%",
+      },
   }
 
   const link ={
@@ -84,7 +90,10 @@ const container = {
     border: "1px solid green",
     color: "green",
     fontWeight:"600",
-    fontSize: "15px"
+    fontSize: "15px",
+    "@media only screen and (max-width: 625px)": {
+        width: "90%",
+      },
 
   }
 

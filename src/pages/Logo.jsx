@@ -1,15 +1,13 @@
-import { Box, Container, Flex, Input, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
   const Id = {
-    width: "800px",
     height: "100px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "5px",
     color:"#1A5319",
-    flexDirection:"column"
-    
+    flexDirection:"column",
   };
 
   const wrapper = {
